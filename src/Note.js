@@ -7,19 +7,42 @@ class Note extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      editing: false
+    }
     this.edit = this.edit.bind(this)
     this.remove = this.remove.bind(this)
+    this.renderForm = this.renderForm.bind(this)
+    this.renderDisplay = this.renderDisplay.bind(this)
+    this.save = this.save.bind(this)
   }
 
   edit() {
-    alert('Editing Note')
-  }
+		this.setState({
+			editing: true
+		})
+	}
 
   remove() {
     alert('Removing Note')
   }
 
-  render () {
+  save() {
+    alert('Data was saved!')
+  }
+
+  renderForm() {
+    return (
+      <div className='note'>
+        <form>
+          <textarea />
+          <button onClick={this.save}><FaFloppyO /></button>
+        </form>
+      </div>
+    )
+  }
+
+  renderDisplay () {
     return (
       <div className='note'>
         <p>Learning React</p>
@@ -29,6 +52,16 @@ class Note extends Component {
         </span>
       </div>
     )
+  }
+
+  render() {
+    // this will render the form if the state is set to 'editing'
+    if (this.state.editing) {
+      return this.renderForm()
+    // if the state is not set to editing, it will not render the form
+    } else {
+      return this.renderDisplay()
+    }
   }
 }
 
