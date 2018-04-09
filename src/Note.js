@@ -45,7 +45,7 @@ class Note extends Component {
   renderDisplay () {
     return (
       <div className='note'>
-        <p>Learning React</p>
+        <p>{this.props.children}</p>
         <span>
           <button onClick={this.edit} id='edit'><FaPencil /></button>
           <button onClick={this.remove} id='remove'><FaTrash /></button>
