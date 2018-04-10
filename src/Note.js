@@ -24,7 +24,7 @@ class Note extends Component {
 	}
 
   remove () {
-    alert('Removing Note')
+    this.props.onRemove(this.props.index)
   }
 
   save (event) {
